@@ -9,16 +9,16 @@ var timer1 = setInterval(function(){
 
 function move(){
     var mainIMgLeft = parseInt(mainImg.style.left);
-    mainImg.style.left = mainIMgLeft - 400 + 'px';
+    mainImg.style.left = mainIMgLeft - 500 + 'px';
 }
 function move1(){
     var mainIMgLeft = parseInt(mainImg.style.left);
-    if(mainIMgLeft == -2000){
+    if(mainIMgLeft == -2500){
         mainImg.style.transitionDuration = '0s';
         mainImg.style.left = '0px';
     }
     if(mainIMgLeft == 0){
         mainImg.style.transitionDuration = '1s';
-        mainImg.style.left = '-400px';
+        mainImg.style.left = '-500px';
     }
 }
