@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 0px;
+}
+
+.main {
+    width: 400px;
+    height: 700px;
+    border: 2px solid black;
+    margin: 0px auto;
+    overflow: hidden;
+    position: relative;
+}
+.main-img{
+    height: 700px;
+    width: 2000px;
+    position: absolute;
+    transition-duration:  1s;
+}
+.img{
+    float: left;
+    width: 400px;
+    height: 700px;
+}
