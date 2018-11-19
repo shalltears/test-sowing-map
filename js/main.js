@@ -8,6 +8,7 @@ var obj = {
     btnRight: document.getElementsByClassName('btn')[1],
     init: function () {//主函数
         this.timer();
+        this.click();
     },
     move: function (origin) {//移动
         this.state == true ? this.cont++ : this.cont--;
@@ -17,35 +18,35 @@ var obj = {
         this.sleepTime = 2000;
         this.timer();
         if (this.cont > 4 && this.state == true) {
-            clearInterval(timer1);
-            this.cont = 0;
-            origin.style.transitionDuration = '0s';
-            origin.style.transform = 'translate3d(' + this.cont * this.step + 'px,0px,0px)';
-            this.sleepTime = 50;
-            this.timer();
-        }
+            this.change(origin, 0);
+        };
         if (this.cont < 0 && this.state == false) {
-            clearInterval(timer1);
-            this.cont = 4;
-            origin.style.transitionDuration = '0s';
-            origin.style.transform = 'translate3d(' + this.cont * this.step + 'px,0px,0px)';
-            this.sleepTime = 50;
-            this.timer();
-        }
+            this.change(origin, 4);
+        };
+    },
+    change: function (origin, cont) {//特殊处理
+        clearInterval(timer1);
+        this.cont = cont;
+        origin.style.transitionDuration = '0s';
+        origin.style.transform = 'translate3d(' + this.cont * this.step + 'px,0px,0px)';
+        this.sleepTime = 50;
+        this.timer();
     },
     timer: function () {//计时器
         timer1 = setInterval(function () {
             obj.move(obj.origin);
             obj.state = true;
-        }, obj.sleepTime);
+        }, obj.sleepTime)
+    },
+    click: function () {
+        obj.btnLeft.onclick = function () {//向左
+            obj.state = false;
+            obj.move(obj.origin)
+        };
+        obj.btnRight.onclick = function () {//向右
+            obj.state = true;
+            obj.move(obj.origin)
+        };
     }
 }
 obj.init();
-obj.btnLeft.onclick = function () {//向左
-    obj.state = false;
-    obj.move(obj.origin);
-}
-obj.btnRight.onclick = function () {//向右
-    obj.state = true;
-    obj.move(obj.origin);
-}
