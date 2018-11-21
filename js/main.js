@@ -1,12 +1,14 @@
 var obj = {
     sleepTime: 2000,//轮播延时
-    cont: 0,//第几张
+    cont: 1,//第几张
     step: -500,//步距
     state: true,//左为false，右为true
     origin: document.getElementsByClassName('main-img')[0],//拿到全部图片的父级
     btnLeft: document.getElementsByClassName('btn')[0],
     btnRight: document.getElementsByClassName('btn')[1],
+    mainLi: document.getElementsByTagName('li'),
     init: function () {//主函数
+        this.bottomStateChange(this.cont);
         this.timer();
         this.click();
     },
@@ -17,12 +19,9 @@ var obj = {
         origin.style.transitionDuration = '0.3s';
         this.sleepTime = 2000;
         this.timer();
-        if (this.cont > 4 && this.state == true) {
-            this.change(origin, 0);
-        };
-        if (this.cont < 0 && this.state == false) {
-            this.change(origin, 4);
-        };
+        this.cont > 4 && this.state == true ? this.change(origin, 0) : 0;
+        this.cont < 0 && this.state == false ? this.change(origin, 4) : 0;
+        this.bottomStateChange(this.cont);
     },
     change: function (origin, cont) {//特殊处理
         clearInterval(timer1);
@@ -47,6 +46,12 @@ var obj = {
             obj.state = true;
             obj.move(obj.origin)
         };
+    },
+    bottomStateChange: function (cont) {//下面的点点
+        for (var i = 0; i < 4; i++) {
+            obj.mainLi[i].className = 'main-li';
+        }
+        cont > 0 ? obj.mainLi[cont - 1].className = 'main-li-2' : obj.mainLi[3].className = 'main-li-2';
     }
 }
 obj.init();
