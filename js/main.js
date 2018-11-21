@@ -4,9 +4,8 @@ var obj = {
     step: -500,//步距
     state: true,//左为false，右为true
     origin: document.getElementsByClassName('main-img')[0],//拿到全部图片的父级
-    btnLeft: document.getElementsByClassName('btn')[0],
-    btnRight: document.getElementsByClassName('btn')[1],
-    mainLi: document.getElementsByTagName('li'),
+    btn: document.getElementsByClassName('btn'),//左右按钮
+    mainLi: document.getElementsByTagName('li'),//圆圈
     init: function () {//主函数
         this.bottomStateChange(this.cont);
         this.timer();
@@ -38,14 +37,23 @@ var obj = {
         }, obj.sleepTime)
     },
     click: function () {
-        obj.btnLeft.onclick = function () {//向左
+        obj.btn[0].onclick = function () {
             obj.state = false;
-            obj.move(obj.origin)
-        };
-        obj.btnRight.onclick = function () {//向右
+            obj.move(obj.origin);
+        }
+        obj.btn[1].onclick = function () {
             obj.state = true;
-            obj.move(obj.origin)
-        };
+            obj.move(obj.origin);
+        }
+        for (var i = 0; i < 4; i++) {
+            (function (i) {
+                obj.mainLi[i].onclick = function () {
+                    obj.state = true;
+                    obj.cont = i;
+                    obj.move(obj.origin);
+                }
+            }(i));
+        }
     },
     bottomStateChange: function (cont) {//下面的点点
         for (var i = 0; i < 4; i++) {

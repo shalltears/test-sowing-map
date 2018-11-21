@@ -51,17 +51,17 @@
     font-size: 50px;
 }
 .main-ul{
-    background-color: azure;
+    background-color: rgb(134, 255, 255);
     width: 100px;
     height: 20px;
     position: absolute;
-    top: 680px;
+    top: 670px;
     left: 200px;
     border-radius: 10px;
 }
 .main-li{
     margin-top: 3px;
-    background-color: antiquewhite;
+    background-color: rgb(255, 208, 147);
     border-radius: 50%;
     width: 15px;
     height: 15px;
