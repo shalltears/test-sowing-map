@@ -36,7 +36,7 @@ var obj = {
             obj.state = true;
         }, obj.sleepTime)
     },
-    click: function () {
+    click: function () {//几个点击事件
         obj.btn[0].onclick = function () {
             obj.state = false;
             obj.move(obj.origin);
